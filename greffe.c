@@ -55,7 +55,7 @@ int expansion(Arbre * A, Arbre B){
     if(!*A)
         return 0;
     if(strcmp((*A)->val, B->val) == 0 ){
-        if(expansion(&(*A)->fg, B) == 0 || expansion(&(*A)->fd, B) == 0){
+        if(expansion(&(*A)->fg, B) == 0 && expansion(&(*A)->fd, B) == 0){
             Arbre G = NULL;
             copie(&G, B);
             greffeG(&G, *A);
