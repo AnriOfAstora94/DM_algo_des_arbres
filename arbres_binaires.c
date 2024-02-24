@@ -9,7 +9,7 @@ Date de création : 23/02/2024
 #include "arbres_binaires.h"
 
 
-Noeud * recherche_plus_profond(Arbre a,  char * s){
+/*Noeud * recherche_plus_profond(Arbre a,  char * s){
     if(!a)
         return NULL;
     if(strcmp(a->val, s) == 0){
@@ -27,7 +27,7 @@ Noeud * recherche_plus_profond(Arbre a,  char * s){
         return gauche;
     else
         return recherche_plus_profond(a->fd, s);
-}
+}*/
 
 Noeud * alloue_noeud(char *s){
     Noeud * new = (Noeud *)malloc(sizeof(Noeud));
