@@ -24,8 +24,15 @@ void affiche_aux(Arbre a);
 */
 Noeud * recherche_plus_profond(Arbre a, char *s);
 
+/**
+ * La fonction alloue_noeud renvoie le noeud après l'avoir alloué en mémoire et initialisé sa valeur à s, renvoie NULL si l'allocation échoue
+ * @param s La chaîne de caractère représentant la valeur à initialiser
+*/
 Noeud * alloue_noeud(char *s);
 
+/**
+ * La fonction liberer libère l'espace mémoire utilisé 
+*/
 void liberer(Arbre * A);
 
 Arbre cree_A_1();
