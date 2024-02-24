@@ -11,19 +11,30 @@ Date de création : 23/02/2024
 
 
 int main(){
-    char s[10] = "binaire";
-    char c[10] = "binaire";
-    char d[10] = "ternaire";
-    Arbre a = alloue_noeud(s);
-    a->ind = 1;
-    a->fg = alloue_noeud(c);
-    a->fg->ind = 2;
-    a->fd = alloue_noeud(c);
-    a->fg->fg = alloue_noeud(d);
-    a->fg->fd = alloue_noeud(d);
-    Noeud * nd = recherche_plus_profond(a, "binaire");
+    /*
+    //Arbre A1
+    Arbre a = alloue_noeud("arbre");
+    a->fg = alloue_noeud("binaire");
+    a->fd = alloue_noeud("ternaire");
+    Arbre b = alloue_noeud("binaire");
+    b->fg = alloue_noeud("lexicographique");
+    b->fd = alloue_noeud("n-aire");
+    */
+   
+    // Arbre A2 
+    Arbre a = alloue_noeud("Anemone");
+    a->fg = alloue_noeud("Camomille");
+    a->fd = alloue_noeud("Camomille");
+    a->fd->fg = alloue_noeud("Dahlia");
+    a->fd->fg->fd = alloue_noeud("Camomille");
+    a->fd->fg->fd->fg = alloue_noeud("Iris");
+    a->fd->fg->fd->fd = alloue_noeud("Jasmin");
+
+    Arbre b = alloue_noeud("Camomille");
+    b->fg = alloue_noeud("Lilas");
+    b->fd = alloue_noeud("Rose");
+    expansion(&a, b);
     affiche(a);
-    printf("%d\n", nd->ind);
     return 0;
 }
 
