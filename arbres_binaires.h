@@ -32,14 +32,24 @@ Noeud * recherche_plus_profond(Arbre a, char *s);
 Noeud * alloue_noeud(char *s);
 
 /**
- * La fonction liberer libère l'espace mémoire utilisé 
+ * La fonction liberer libère l'espace mémoire utilisé par un Arbre
+ * @param A l'Arbre dont on libère la mémoire
 */
 void liberer(Arbre * A);
 
+/**
+ * La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+*/
 Arbre cree_A_1();
 
+/**
+ * La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+*/
 Arbre cree_A_2();
 
+/**
+ * La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+*/
 Arbre cree_A_3();
 
 
