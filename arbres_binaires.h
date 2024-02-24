@@ -18,9 +18,10 @@ void affiche(Arbre a);
 
 void affiche_aux(Arbre a);
 
-/*
-Fonction qui renvoie l'adresse du noeud le plus profond ayant comme val la chaine de caractère contenu
-dans * s 
+/**
+ * Fonction qui renvoie l'adresse du noeud le plus profond ayant comme val la chaine de caractère contenu dans * s
+ * @param a Arbre a dont on recherche un élément
+ * @param s La chaîne de caractère recherché
 */
 Noeud * recherche_plus_profond(Arbre a, char *s);
 
