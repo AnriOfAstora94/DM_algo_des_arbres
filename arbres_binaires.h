@@ -9,7 +9,6 @@ Date de création : 23/02/2024
 
 typedef struct _noeud{
     char * val;
-    int ind;
     struct _noeud *fg, *fd;
 } Noeud, *Arbre;
 
