@@ -10,6 +10,17 @@ Date de création : 23/02/2024
 
 int copie(Arbre * dest, Arbre source);
 
+/*
+Fonction qui greffe sur G le sous arbre gauche de N
+*/
+void greffeG(Arbre * G, Noeud * n);
+
+/*
+Fonction qui greffe sur G le sous arbre droit de N
+*/
+void greffeD(Arbre * G, Noeud * n);
+
+
 int expansion(Arbre * A, Arbre B);
 
 

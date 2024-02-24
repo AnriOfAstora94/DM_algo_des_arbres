@@ -27,13 +27,37 @@ int copie(Arbre * dest, Arbre source){
     return 1;
 }
 
-/*
+void greffeG(Arbre * G, Noeud * n){
+    if(!*G)
+        return;
+    if(!(*G)->fg)
+        copie((*G)->fg, n->fg);
+    else
+        greffeG(&(*G)->fg, n);
+        //greffeD(&(*G)->fg, n);
+}
+
+
+void greffeD(Arbre *G, Noeud * n){
+    if(!*G)
+        return;
+    if(!(*G)->fd)
+        copie((*G)->fd, n->fd);
+    else
+        greffeD(&(*G)->fd, n);
+        greffeG(&(*G)->fd, n);
+
+}
+
 int expansion(Arbre * A, Arbre B){
     if(!*A)
         return 0;
-    if(strcmp((*A)->val, B->val) == 0)
-        ijfezjdnjnc
-        tester giteub
+    if(strcmp((*A)->val, B->val) == 0 /*&& gauche ou droite ne renvoie R*/){
+            Arbre G = NULL;
+            copie(&G, B);
+            greffeG(&G, B);
+            greffeD(&G, B);
+
+    }
     return 1;
 }
-*/
