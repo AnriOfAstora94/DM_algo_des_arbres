@@ -32,7 +32,8 @@ int expansion(Arbre * A, Arbre B){
     if(!*A)
         return 0;
     if(strcmp((*A)->val, B->val) == 0)
-
+        ijfezjdnjnc
+        tester giteub
     return 1;
 }
 */
