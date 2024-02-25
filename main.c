@@ -33,6 +33,22 @@ int main(){
     Arbre b = alloue_noeud("Camomille");
     b->fg = alloue_noeud("Lilas");
     b->fd = alloue_noeud("Rose");
+
+    /*
+    // Arbre A3
+    Arbre a = alloue_noeud("Intel Core i9");
+    a->fg = alloue_noeud("Apple M3 Max");
+    a->fg->fd = alloue_noeud("AMD Ryzen 9");
+    a->fg->fd->fg = alloue_noeud("Intel Core i9");
+    a->fd = alloue_noeud("Intel Core i9");
+    a->fd->fg = alloue_noeud("Intel Core i9");
+
+    Arbre b = alloue_noeud("Intel Core i9");
+    b->fg = alloue_noeud("Intel Core i9"):
+    b->fg->fg = alloue_noeud("Apple M3 Max");
+    b->fg->fd = alloue_noeud("AMD Ryzen 9");
+    
+    */
     expansion(&a, b);
     affiche(a);
     return 0;

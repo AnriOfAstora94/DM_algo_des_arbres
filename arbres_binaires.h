@@ -6,15 +6,23 @@ Date de création : 23/02/2024
 #ifndef _ABR_
 #define _ABR_
 
-
+//Structure des arbres
 typedef struct _noeud{
     char * val;
     struct _noeud *fg, *fd;
 } Noeud, *Arbre;
 
 
+/**
+ * La fonction affiche affiche un Arbre en faisant appel à affiche_aux et passe à la ligne une fois l'affichage terminé
+ * @param a Arbre à afficher
+*/
 void affiche(Arbre a);
 
+/**
+ * La fonction affiche_aux affiche les valeurs d'un arbre comme un parcours préfixe
+ * @param a Arbre à afficher
+*/
 void affiche_aux(Arbre a);
 
 /**
@@ -22,7 +30,7 @@ void affiche_aux(Arbre a);
  * @param a Arbre a dont on recherche un élément
  * @param s La chaîne de caractère recherché
 */
-Noeud * recherche_plus_profond(Arbre a, char *s);
+//Noeud * recherche_plus_profond(Arbre a, char *s);
 
 /**
  * La fonction alloue_noeud renvoie le noeud après l'avoir alloué en mémoire et initialisé sa valeur à s, renvoie NULL si l'allocation échoue
