@@ -59,6 +59,10 @@ Arbre cree_A_2();
 */
 Arbre cree_A_3();
 
-
+void ecrireDebut(FILE *f);
+void ecrireFin(FILE *f);
+void ecrireArbre(FILE *f, Arbre a);
+void dessine(FILE *f, Arbre a);
+void creePDF(char *dot, char *pdf, Arbre a);
 #endif
 

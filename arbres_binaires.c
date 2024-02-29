@@ -9,25 +9,6 @@ Date de création : 23/02/2024
 #include "arbres_binaires.h"
 
 
-/*Noeud * recherche_plus_profond(Arbre a,  char * s){
-    if(!a)
-        return NULL;
-    if(strcmp(a->val, s) == 0){
-        Noeud * rgauche = recherche_plus_profond(a->fg, s);
-        if(rgauche)
-            return rgauche;
-        Noeud * rdroite = recherche_plus_profond(a->fd, s);
-        if(rdroite)
-            return rdroite;
-        else
-            return a;
-    }
-    Noeud * gauche = recherche_plus_profond(a->fg, s);
-    if(gauche)
-        return gauche;
-    else
-        return recherche_plus_profond(a->fd, s);
-}*/
 
 Noeud * alloue_noeud(char *s){
     Noeud * new = (Noeud *)malloc(sizeof(Noeud));
@@ -100,3 +81,50 @@ Arbre cree_A_3(){
     a->fd->fg = alloue_noeud("Intel Core i9");
     return a;
 }
+
+
+void ecrireDebut(FILE *f){
+    fprintf(f,"digraph arbre {\n");
+    fprintf(f, "node [shape=record, height=.1]\n");
+    fprintf(f,"edge [tailclip=false, arrowtail = dot, dir=both];\n");
+}
+
+void ecrireFin(FILE *f){
+    fprintf(f,"}\n");
+}
+
+void ecrireArbre(FILE *f, Arbre a){
+if (a != NULL){
+    fprintf(f,"n%p [label=\"<gauche > | <valeur > %s | <droite >\"]",a,a->val);
+    if (a->fd != NULL){
+        fprintf(f,"n%p:droite:c -> n%p:valeur\n",a,a->fd);
+        ecrireArbre(f,a->fd);
+    }
+    if (a->fg != NULL){
+        fprintf(f,"n%p:gauche:c -> n%p:valeur\n",a,a->fg);
+        ecrireArbre(f,a->fg);
+    }
+    }
+    return;
+}
+
+void dessine(FILE *f, Arbre a){
+    ecrireDebut(f);
+    ecrireArbre(f, a);
+    ecrireFin(f);
+}
+
+
+void creePDF(char *dot, char *pdf, Arbre a){
+    FILE *out=fopen(dot,"w");
+    dessine(out,a);
+    fclose(out);
+    int len = strlen(dot) + strlen(pdf) + 15; char cmd[len];
+    strcpy(cmd, "dot -Tpdf ");
+    strcat(cmd, dot);
+    strcat(cmd, " -o ");
+    strcat(cmd, pdf);
+    system(cmd); 
+}
+
+

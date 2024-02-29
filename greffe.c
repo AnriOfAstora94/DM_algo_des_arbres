@@ -61,6 +61,13 @@ int expansion(Arbre * A, Arbre B){
             greffeG(&G, *A);
             greffeD(&G, *A);
             (*A) = G;        
+            
+        }else{
+            Arbre G = NULL;
+            copie(&G, B);
+            greffeG(&G, *A);
+            greffeD(&G, *A);
+            (*A) = G;    
         }
         return 1;
     }
