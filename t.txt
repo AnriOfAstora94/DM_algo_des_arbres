@@ -1,17 +1,15 @@
-1 exp(IC9)
- ->exp(APM)      == 0    ||          2 exp(IC9)
-    exp(vide)  
-    exp(AMD)
-    3 ->exp(IC9) greffe
-        exp(vide) || exp(vide)
-
-1 greffe de 1
-
-
-exp(IC9)
-->exp(APM) &&  2 exp(IC9)
-
-2exp(IC9)
-->exp(IC9) && exp(vide)
-  ->exp(IC9)          == 1
-    ->exp(vide) && exp(vide)
+Valeur : arbre
+Gauche :
+    Valeur : binaire
+    Gauche :
+        Valeur : lexicographique
+        Gauche : NULL
+        Droite : NULL
+    Droite :
+        Valeur : n-aire
+        Gauche : NULL
+        Droite : NULL
+Droite :
+    Valeur : ternaire
+    Gauche : NULL
+    Droite : NULL

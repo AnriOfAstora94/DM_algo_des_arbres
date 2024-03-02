@@ -37,3 +37,4 @@ void deserialisation(FILE * f, Arbre *a, int i);
 int deserialise(char * nom_de_fichier, Arbre * A);
 
 #endif
+

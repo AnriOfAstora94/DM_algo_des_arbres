@@ -1,0 +1,8 @@
+digraph arbre {
+node [shape=record, height=.1]
+edge [tailclip=false, arrowtail = dot, dir=both];
+n0x13ed2a0 [label="<gauche > | <valeur > arbre | <droite >"]n0x13ed2a0:droite:c -> n0x13ed320:valeur
+n0x13ed320 [label="<gauche > | <valeur > ternaire | <droite >"]n0x13ed2a0:gauche:c -> n0x13ed420:valeur
+n0x13ed420 [label="<gauche > | <valeur > binaire | <droite >"]n0x13ed420:droite:c -> n0x13ed4a0:valeur
+n0x13ed4a0 [label="<gauche > | <valeur > n-aire | <droite >"]n0x13ed420:gauche:c -> n0x13ed460:valeur
+n0x13ed460 [label="<gauche > | <valeur > lexicographique | <droite >"]}

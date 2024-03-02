@@ -7,7 +7,7 @@
 CC = clang
 CFLAGS = -std=c17 -pedantic -Wall
 EXEC = saage
-OBJ = main.o greffe.o arbres_binaires.o serialise.o
+OBJ = main.o greffe.o arbres_binaires.o saage.o
 
 default: $(EXEC)
 

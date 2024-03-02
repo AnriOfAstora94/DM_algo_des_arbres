@@ -3,20 +3,31 @@
 #include <stdio.h>
 #include "saage.h"
 
-void serialise_aux(FILE * f, Arbre A, int i){
-    for(int j = 0; j <= i; j++){
+void indente(FILE * f, int  i){
+    if(i < 0)
+        return;
+    for(int j = 0; j < i; j++){
         fprintf(f, "    ");
     }
+}
+void serialise_aux(FILE * f, Arbre A, int i){
+    indente(f, i);
     fprintf(f, "Valeur : %s\n", A->val);
-    if(!A->fg)
+    if(!A->fg){
+        indente(f, i);
         fprintf(f, "Gauche : NULL\n");
+    }
     else{
+        indente(f, i);
         fprintf(f, "Gauche :\n");
         serialise_aux(f, A->fg, i+1);
     }
-    if(!A->fd)
+    if(!A->fd){
+        indente(f, i);
         fprintf(f, "Droite : NULL\n");
+    }
     else{
+        indente(f, i);
         fprintf(f, "Droite :\n");
         serialise_aux(f, A->fd, i+1);
     }
@@ -25,7 +36,7 @@ void serialise_aux(FILE * f, Arbre A, int i){
 
 int serialise(char * nom_de_fichier, Arbre A){
     FILE *f = fopen(nom_de_fichier, "w");
-    int i =0;
+    int i = 0;
     if(!f)
         return 0;
     serialise_aux(f, A, i);
@@ -38,14 +49,14 @@ void deserialise_aux(FILE * f, Arbre *A, int i){
         fscanf(f, "    ");
     }
     fscanf(f, "Valeur : ");
-    fscanf(f, "%s", &(*A)->val);
+    fscanf(f, "%s", (*A)->val);
     if(!(*A)->fg){
         fscanf(f, "Gauche : NULL");
         (*A)->fg = NULL;
     }
     else{
         fscanf(f, "Gauche :");
-        deserialise_aux(f, (*A)->fg, i+1);
+        deserialise_aux(f, &(*A)->fg, i+1);
     }
     if(!(*A)->fd){
         fscanf(f, "Droite : NULL");
@@ -53,7 +64,7 @@ void deserialise_aux(FILE * f, Arbre *A, int i){
     }
     else{
         fscanf(f, "Droite :");
-        deserialise_aux(f, (*A)->fd, i+1);
+        deserialise_aux(f, &(*A)->fd, i+1);
     }
 }
 
@@ -66,3 +77,4 @@ int deserialise(char * nom_de_fichier, Arbre * A){
     fclose(f);
     return 1;
 }
+
