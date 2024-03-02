@@ -82,6 +82,11 @@ Arbre cree_A_3(){
     return a;
 }
 
+int construit_arbre(Arbre *a){
+
+    return 1;
+}
+
 
 void ecrireDebut(FILE *f){
     fprintf(f,"digraph arbre {\n");

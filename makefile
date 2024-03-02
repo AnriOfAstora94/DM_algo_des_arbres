@@ -21,6 +21,8 @@ greffe.o : greffe.c greffe.h arbres_binaires.h
 
 arbres_binaires.o : arbres_binaires.c arbres_binaires.h
 
+saage.o : saage.c saage.h arbres_binaires.h
+
 %.o: %.c 
 	$(CC) -c -o $@ $< $(CFLAGS)
 
