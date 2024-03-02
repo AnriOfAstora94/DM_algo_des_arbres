@@ -128,3 +128,6 @@ void creePDF(char *dot, char *pdf, Arbre a){
 }
 
 
+int construit_arbre(Arbre *A){
+
+}

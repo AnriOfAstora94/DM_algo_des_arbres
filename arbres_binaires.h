@@ -59,6 +59,8 @@ Arbre cree_A_2();
 */
 Arbre cree_A_3();
 
+int construit_arbre(Arbre *a);
+
 void ecrireDebut(FILE *f);
 void ecrireFin(FILE *f);
 void ecrireArbre(FILE *f, Arbre a);
