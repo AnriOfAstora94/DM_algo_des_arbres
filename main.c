@@ -27,7 +27,8 @@ int main(){
     //creePDF("A2.dot", "A2.pdf", a);
     serialise("c.txt", a);
     deserialise("c.txt", &c);
-    //creePDF("A2.dot", "A2.pdf", c);
+    affiche(c);
+    creePDF("A2.dot", "A2.pdf", c);
     
 
     return 0;

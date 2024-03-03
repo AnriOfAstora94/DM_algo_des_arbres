@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 #include "saage.h"
 
 void indente(FILE * f, int  i){
@@ -57,29 +58,87 @@ int serialise(char * nom_de_fichier, Arbre A){
     return 1;
 }
 
+void supprimerEspacesDebut(char *chaine) {
+    size_t longueur = strlen(chaine);
+    size_t i = 0;
+
+    // Trouver le premier caractère non vide
+    while (i < longueur && isspace(chaine[i])) {
+        i++;
+    }
+
+    // Déplacer les caractères non vides au début de la chaîne
+    if (i > 0) {
+        memmove(chaine, chaine + i, longueur - i + 1);
+    }
+}
+
+
 int deserialise_aux(FILE * f, Arbre *A, int i){
     if(!f)
         return 0;
     indente(f, i);
     char c[100];
-    fscanf(f, "Valeur : ");
-    if(fscanf(f, "%s", c)){
+    fscanf(f, "%s", c);
+    //printf("%s\n", c);
+    if(!strcmp(c, "Valeur")){
+        //printf("coucou ");
+        fgetc(f);
+        fgetc(f);
+        fgetc(f);
+        fscanf(f, "%s", c);
         *A = alloue_noeud(c);
-        printf("val :%s\n", (*A)->val);
+        if(!(*A))
+            return 0;
+    fgetc(f);
+    fgets(c, 512, f);
+    supprimerEspacesDebut(c);
+    if(strcmp(c, "Gauche :")){
+        deserialise_aux(f, &(*A)->fg, i +1);
     }
-    if(fscanf(f, "Gauche : NULL")){               
-        (*A)->fg = NULL;
+    if(strcmp(c, "Gauche : NULL")){
+        deserialise_aux(f, &(*A)->fd, i);
     }
-    else{
-        fscanf(f, "Gauche :");
-        deserialise_aux(f, &(*A)->fg, i+1);
-    }
-    if(fscanf(f, "Droite : NULL")){
-        (*A)->fd = NULL;
-    }
-    else{
-        fscanf(f, "Droite :");
+    if(strcmp(c, "Droite :")){
         deserialise_aux(f, &(*A)->fd, i+1);
+    }
+    if(strcmp(c, "Droite : NULL")){
+        deserialise_aux(f, &(*A)->fd, i-1);
+    }
+/*        indente(f, i);
+        fscanf(f, "%49[^\n]%*c", c);
+        printf("%s ", c);
+        if(!strcmp(c, "Gauche : NULL")){
+            (*A)->fg = NULL;
+            indente(f, i);
+            fscanf(f, "%49[^\n]%*c", c);
+            if(!strcmp(c, "Droite : NULL")){
+                (*A)->fd = NULL;
+                return 1;
+            }
+            else{
+                deserialise_aux(f, &(*A)->fd, i);
+            }
+        }
+        printf("%s ", c);
+        if(!strcmp(c, "Gauche :")){
+            deserialise_aux(f, &(*A)->fg, i+1);
+        }
+        if(!strcmp(c, "Droite : NULL")){
+            (*A)->fd = NULL;
+            indente(f, i);
+            fscanf(f, "%49[^\n]%*c", c);
+            if(!strcmp(c, "Gauche : NULL")){
+                (*A)->fg = NULL;
+                return 1;
+            }
+            else{
+                deserialise_aux(f, &(*A)->fg, i);
+            }
+        }
+        if(!strcmp(c, "Droite :")){
+            deserialise_aux(f, &(*A)->fd, i+1);
+        }*/
     }
     return 1;
 }
