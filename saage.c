@@ -80,9 +80,9 @@ int deserialise_aux(FILE * f, Arbre *A, int i){
     indente(f, i);
     char c[100];
     fscanf(f, "%s", c);
-    //printf("%s\n", c);
+    printf("%s\n", c);
     if(!strcmp(c, "Valeur")){
-        //printf("coucou ");
+        printf("coucou \n");
         fgetc(f);
         fgetc(f);
         fgetc(f);
@@ -92,19 +92,28 @@ int deserialise_aux(FILE * f, Arbre *A, int i){
             return 0;
     fgetc(f);
     fgets(c, 512, f);
+    fgetc(f);
     supprimerEspacesDebut(c);
-    if(strcmp(c, "Gauche :")){
+    printf("/%s/", c);
+    c[strcspn(c, "\n")] = '\0';
+    if(!strcmp(c, "Gauche :")){
+        printf("Salut \n");
         deserialise_aux(f, &(*A)->fg, i +1);
     }
-    if(strcmp(c, "Gauche : NULL")){
-        deserialise_aux(f, &(*A)->fd, i);
+    if(!strcmp(c, "Gauche : NULL")){
+        fgets(c, 512, f);
+        supprimerEspacesDebut(c);
+        c[strcspn(c, "\n")] = '\0';
+        printf("/%s/", c);
+        fgetc(f);
+        if(!strcmp(c, "Droite : NULL")){
+            deserialise_aux(f, A, i-1);
+        }
     }
-    if(strcmp(c, "Droite :")){
+    if(!strcmp(c, "Droite :")){
         deserialise_aux(f, &(*A)->fd, i+1);
     }
-    if(strcmp(c, "Droite : NULL")){
-        deserialise_aux(f, &(*A)->fd, i-1);
-    }
+
 /*        indente(f, i);
         fscanf(f, "%49[^\n]%*c", c);
         printf("%s ", c);
