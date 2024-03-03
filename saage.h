@@ -11,7 +11,7 @@
  * @param A l'arbre à sérialiser
  * @param i un entier pour gérer l'indentation
 */
-void serialise_aux(FILE * f, Arbre A, int i);
+int serialise_aux(FILE * f, Arbre A, int i);
 
 
 /**
