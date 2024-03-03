@@ -1,15 +1,156 @@
-Valeur : arbre
+Valeur : Intel Core i9
 Gauche :
-    Valeur : binaire
+    Valeur : Intel Core i9
     Gauche :
-        Valeur : lexicographique
-        Gauche : NULL
-        Droite : NULL
+        Valeur : Apple M3 Max
+        Gauche :
+            Valeur : Apple M3 Max
+            Gauche : NULL
+            Droite :
+                Valeur : AMD Ryzen 9
+                Gauche :
+                    Valeur : Intel Core i9
+                    Gauche :
+                        Valeur : Intel Core i9
+                        Gauche :
+                            Valeur : Apple M3 Max
+                            Gauche : NULL
+                            Droite : NULL
+                        Droite :
+                            Valeur : AMD Ryzen 9
+                            Gauche : NULL
+                            Droite : NULL
+                    Droite : NULL
+                Droite : NULL
+        Droite :
+            Valeur : Intel Core i9
+            Gauche :
+                Valeur : Intel Core i9
+                Gauche :
+                    Valeur : Apple M3 Max
+                    Gauche :
+                        Valeur : Intel Core i9
+                        Gauche :
+                            Valeur : Intel Core i9
+                            Gauche :
+                                Valeur : Apple M3 Max
+                                Gauche : NULL
+                                Droite : NULL
+                            Droite :
+                                Valeur : AMD Ryzen 9
+                                Gauche : NULL
+                                Droite : NULL
+                        Droite : NULL
+                    Droite : NULL
+                Droite :
+                    Valeur : AMD Ryzen 9
+                    Gauche :
+                        Valeur : Intel Core i9
+                        Gauche :
+                            Valeur : Intel Core i9
+                            Gauche :
+                                Valeur : Apple M3 Max
+                                Gauche : NULL
+                                Droite : NULL
+                            Droite :
+                                Valeur : AMD Ryzen 9
+                                Gauche : NULL
+                                Droite : NULL
+                        Droite : NULL
+                    Droite : NULL
+            Droite : NULL
     Droite :
-        Valeur : n-aire
-        Gauche : NULL
-        Droite : NULL
+        Valeur : AMD Ryzen 9
+        Gauche :
+            Valeur : Apple M3 Max
+            Gauche : NULL
+            Droite :
+                Valeur : AMD Ryzen 9
+                Gauche :
+                    Valeur : Intel Core i9
+                    Gauche :
+                        Valeur : Intel Core i9
+                        Gauche :
+                            Valeur : Apple M3 Max
+                            Gauche : NULL
+                            Droite : NULL
+                        Droite :
+                            Valeur : AMD Ryzen 9
+                            Gauche : NULL
+                            Droite : NULL
+                    Droite : NULL
+                Droite : NULL
+        Droite :
+            Valeur : Intel Core i9
+            Gauche :
+                Valeur : Intel Core i9
+                Gauche :
+                    Valeur : Apple M3 Max
+                    Gauche :
+                        Valeur : Intel Core i9
+                        Gauche :
+                            Valeur : Intel Core i9
+                            Gauche :
+                                Valeur : Apple M3 Max
+                                Gauche : NULL
+                                Droite : NULL
+                            Droite :
+                                Valeur : AMD Ryzen 9
+                                Gauche : NULL
+                                Droite : NULL
+                        Droite : NULL
+                    Droite : NULL
+                Droite :
+                    Valeur : AMD Ryzen 9
+                    Gauche :
+                        Valeur : Intel Core i9
+                        Gauche :
+                            Valeur : Intel Core i9
+                            Gauche :
+                                Valeur : Apple M3 Max
+                                Gauche : NULL
+                                Droite : NULL
+                            Droite :
+                                Valeur : AMD Ryzen 9
+                                Gauche : NULL
+                                Droite : NULL
+                        Droite : NULL
+                    Droite : NULL
+            Droite : NULL
 Droite :
-    Valeur : ternaire
-    Gauche : NULL
+    Valeur : Intel Core i9
+    Gauche :
+        Valeur : Intel Core i9
+        Gauche :
+            Valeur : Apple M3 Max
+            Gauche :
+                Valeur : Intel Core i9
+                Gauche :
+                    Valeur : Intel Core i9
+                    Gauche :
+                        Valeur : Apple M3 Max
+                        Gauche : NULL
+                        Droite : NULL
+                    Droite :
+                        Valeur : AMD Ryzen 9
+                        Gauche : NULL
+                        Droite : NULL
+                Droite : NULL
+            Droite : NULL
+        Droite :
+            Valeur : AMD Ryzen 9
+            Gauche :
+                Valeur : Intel Core i9
+                Gauche :
+                    Valeur : Intel Core i9
+                    Gauche :
+                        Valeur : Apple M3 Max
+                        Gauche : NULL
+                        Droite : NULL
+                    Droite :
+                        Valeur : AMD Ryzen 9
+                        Gauche : NULL
+                        Droite : NULL
+                Droite : NULL
+            Droite : NULL
     Droite : NULL

@@ -12,16 +12,15 @@ Date de création : 23/02/2024
 
 
 int main(){
-    Arbre a = cree_A_1();
-    Arbre b = alloue_noeud("binaire");
+    Arbre a = cree_A_3();
+    /*Arbre b = alloue_noeud("binaire");
     b->fg = alloue_noeud("lexicographique");
     b->fd = alloue_noeud("n-aire");
-    /*
+    */
     Arbre b = alloue_noeud("Intel Core i9");
     b->fg = alloue_noeud("Intel Core i9");
     b->fg->fg = alloue_noeud("Apple M3 Max");
     b->fg->fd = alloue_noeud("AMD Ryzen 9");
-    */
     expansion(&a, b);
     Arbre c = NULL;
     //creePDF("A2.dot", "A2.pdf", a);
