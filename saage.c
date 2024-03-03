@@ -106,13 +106,9 @@ int deserialise_aux(FILE * f, Arbre *A, int i){
         c[strcspn(c, "\n")] = '\0';
         printf("/%s/", c);
         fgetc(f);
-        if(!strcmp(c, "Droite : NULL")){
-            deserialise_aux(f, A, i-1);
-        }
     }
-    if(!strcmp(c, "Droite :")){
         deserialise_aux(f, &(*A)->fd, i+1);
-    }
+
 
 /*        indente(f, i);
         fscanf(f, "%49[^\n]%*c", c);

@@ -1,6 +1,7 @@
 digraph arbre {
 node [shape=record, height=.1]
 edge [tailclip=false, arrowtail = dot, dir=both];
-n0x55a743b06ae0 [label="<gauche > | <valeur > arbre | <droite >"]n0x55a743b06ae0:gauche:c -> n0x55a743b06b20:valeur
-n0x55a743b06b20 [label="<gauche > | <valeur > binaire | <droite >"]n0x55a743b06b20:gauche:c -> n0x55a743b06b60:valeur
-n0x55a743b06b60 [label="<gauche > | <valeur > lexicographique | <droite >"]}
+n0x559362899ae0 [label="<gauche > | <valeur > arbre | <droite >"]n0x559362899ae0:droite:c -> n0x559362899ba0:valeur
+n0x559362899ba0 [label="<gauche > | <valeur > n-aire | <droite >"]n0x559362899ae0:gauche:c -> n0x559362899b20:valeur
+n0x559362899b20 [label="<gauche > | <valeur > binaire | <droite >"]n0x559362899b20:gauche:c -> n0x559362899b60:valeur
+n0x559362899b60 [label="<gauche > | <valeur > lexicographique | <droite >"]}
