@@ -99,16 +99,16 @@ void ecrireFin(FILE *f){
 }
 
 void ecrireArbre(FILE *f, Arbre a){
-if (a != NULL){
-    fprintf(f,"n%p [label=\"<gauche > | <valeur > %s | <droite >\"]",a,a->val);
-    if (a->fd != NULL){
-        fprintf(f,"n%p:droite:c -> n%p:valeur\n",a,a->fd);
-        ecrireArbre(f,a->fd);
-    }
-    if (a->fg != NULL){
-        fprintf(f,"n%p:gauche:c -> n%p:valeur\n",a,a->fg);
-        ecrireArbre(f,a->fg);
-    }
+    if (a != NULL){
+        fprintf(f,"n%p [label=\"<gauche > | <valeur > %s | <droite >\"]",a,a->val);
+        if (a->fd != NULL){
+            fprintf(f,"n%p:droite:c -> n%p:valeur\n",a,a->fd);
+            ecrireArbre(f,a->fd);
+        }
+        if (a->fg != NULL){
+            fprintf(f,"n%p:gauche:c -> n%p:valeur\n",a,a->fg);
+            ecrireArbre(f,a->fg);
+        }
     }
     return;
 }
