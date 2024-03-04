@@ -58,38 +58,33 @@ int serialise(char * nom_de_fichier, Arbre A){
     return 1;
 }
 
-void supprimerEspacesDebut(char *chaine) {
+void suppr_Espaces_Debut(char *chaine) {
     size_t longueur = strlen(chaine);
     size_t i = 0;
 
-    // Trouver le premier caractère non vide
     while (i < longueur && isspace(chaine[i])) {
         i++;
     }
 
-    // Déplacer les caractères non vides au début de la chaîne
     if (i > 0) {
         memmove(chaine, chaine + i, longueur - i + 1);
     }
 }
 
-int extraireValeur(const char *chaine, char *resultat) {
-    // Vérifier la présence du motif "Valeur :"
+int recherche_val(const char *chaine, char *resultat) {
+
     const char *motif = "Valeur :";
     size_t longueurMotif = strlen(motif);
 
-    // Trouver la position du motif dans la chaîne
     const char *positionMotif = strstr(chaine, motif);
 
     if (positionMotif == NULL) {
-        // Motif non trouvé
         return 0;
     }
 
-    // Copier le texte après le motif dans le résultat
     strcpy(resultat, positionMotif + longueurMotif);
 
-    return 1; // Succès
+    return 1;
 }
 
 
@@ -98,22 +93,23 @@ int deserialise_aux(FILE * f, Arbre *A){
     if(!f)
         return 0;
     char c[100];
+    
     fgets(c, 512, f);
-    supprimerEspacesDebut(c);
+    suppr_Espaces_Debut(c);
     c[strcspn(c, "\n")] = '\0';
-    printf("%s\n", c);
-    extraireValeur(c, val);
+
+    recherche_val(c, val);
     *A = alloue_noeud(val);
     fgets(c, 512, f);
-    supprimerEspacesDebut(c);
+    suppr_Espaces_Debut(c);
     c[strcspn(c, "\n")] = '\0';
-    printf("%s\n", c);
+
     if(!strcmp(c, "Gauche :"))
         deserialise_aux(f, &(*A)->fg);
     fgets(c, 512, f);
-    supprimerEspacesDebut(c);
+    suppr_Espaces_Debut(c);
     c[strcspn(c, "\n")] = '\0';
-    printf("%s\n", c);
+
     if(!strcmp(c, "Droite :"))
         deserialise_aux(f, &(*A)->fd);
     return 1;
@@ -127,59 +123,6 @@ int deserialise(char * nom_de_fichier, Arbre * A){
         return 0;
     }
     deserialise_aux(f, A);
-    //aux(f,A,i, prec); fait pas attention
     fclose(f);
-    return 1;
-}
-
-
-
-
-int aux(FILE * f, Arbre *A, int i, int * prec){
-    char  c[100];
-
-    while(fgets(c,512,f) != NULL){
-        i++;
-        printf("dans le while i =%d\n",i);
-        char * mot = strstr(c, "Valeur"); 
-        char * mot2 = strstr(c, "Gauche : NULL");
-        char * mot3 = strstr(c, "Droite : NULL");
-        char * mot4 = strstr(c, "Gauche");
-        char * mot5 = strstr(c, "Droite");
-
-        if(mot){ // On test si on trouve valeur dans la ligne lu par fgets
-            char rep[100];
-            strncpy(rep, mot + 9, strlen(mot + 9)-1);
-            printf("i = %d val : %s\n",i, rep);
-            *A = alloue_noeud(rep);
-            if(!*A){
-                printf("Erreur d'allocation");
-                return -1;
-            }
-        }
-
-        if(mot3 && *prec == 1){
-            printf("dans la cond d'arret i =%d\n",i);
-            return 0;
-        }
-
-        if(mot2){
-            printf("dans le gauche NULL %d\n", i);
-            *prec = 1;
-            (*A)->fg = NULL;
-        }else if(mot4){
-            printf("dans le gauche %d\n",i);
-            *prec = 0;
-            return aux(f,&(*A)->fg, i, prec);
-        }
-        if(mot3){
-            printf("dans le droite NULL i = %d\n", i);
-            (*A)->fd = NULL;
-        }else if(mot5){
-            printf("dans le droite i = %d\n", i);   
-            *prec = 0;  
-            return aux(f,&(*A)->fd, i,prec);
-        }
-    } 
     return 1;
 }
