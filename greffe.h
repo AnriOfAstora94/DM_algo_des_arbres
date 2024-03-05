@@ -20,14 +20,14 @@ int copie(Arbre * dest, Arbre source);
  * @param G Arbre à greffer
  * @param n Noeud recevant la greffe
 */
-void greffeG(Arbre * G, Noeud * n);
+int greffeG(Arbre * G, Noeud * n);
 
 /**
  * Fonction qui greffe sur G le sous arbre droit de n
  * @param G Arbre à greffer
  * @param n Noeud recevant la greffe
 */
-void greffeD(Arbre * G, Noeud * n);
+int greffeD(Arbre * G, Noeud * n);
 
 /**
  * La fonction expansion effectue la greffe de B sûr l'arbre A donnés tout deux en paramètres

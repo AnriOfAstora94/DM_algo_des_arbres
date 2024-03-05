@@ -17,7 +17,6 @@ int copie(Arbre * dest, Arbre source){
     (*dest) = alloue_noeud(source->val);
     if(!(*dest)){
         fprintf(stderr, "Echec allocation");
-        free(*dest);
         return 0;
     }
 
@@ -28,65 +27,57 @@ int copie(Arbre * dest, Arbre source){
     return 1;
 }
 
-void greffeG(Arbre * G, Noeud * n){
+int greffeG(Arbre * G, Noeud * n){
     if(!*G)
-        return;
-    if(!(*G)->fg)
-        copie(&(*G)->fg, n->fg);
-    else{
+        return 0;
+    if(!(*G)->fg){
+        if(!copie(&(*G)->fg, n->fg)){
+            printf("Echec de la copie\n");
+            return 0;
+        }
+        
+    }else{
         greffeG(&(*G)->fg, n);
         greffeD(&(*G)->fg, n);
     }
+    return 1;
 }
 
-void greffeD(Arbre *G, Noeud * n){
+int greffeD(Arbre *G, Noeud * n){
     if(!*G)
-        return;
-    if(!(*G)->fd)
-        copie(&(*G)->fd, n->fd);
-    else{
+        return 0;
+    if(!(*G)->fd){
+        if(!copie(&(*G)->fd, n->fd)){
+            printf("Echec de la copie\n");
+            return 0;
+        }
+    }else{
         greffeD(&(*G)->fd, n);
         greffeG(&(*G)->fd, n);
     }
-
+    return 1;
 }
 
 int expansion(Arbre * A, Arbre B){
     if(!*A)
         return 0;
     if(strcmp((*A)->val, B->val) == 0 ){
-        if(expansion(&(*A)->fg, B) == 0 && expansion(&(*A)->fd, B) == 0){
-            Arbre G = NULL;
-            copie(&G, B);
-            greffeG(&G, *A);
-            greffeD(&G, *A);
-            (*A) = G;        
-            
-        }else{
-            Arbre G = NULL;
-            copie(&G, B);
-            greffeG(&G, *A);
-            greffeD(&G, *A);
-            (*A) = G;    
+        expansion(&(*A)->fg, B);
+        expansion(&(*A)->fd, B);
+        Arbre G = NULL;
+        if(!copie(&G, B)){
+            printf("Echec de la copie\n");
+            return 0;
         }
+        if(!greffeG(&G, *A))
+            return 0;
+        if(!greffeD(&G, *A))
+            return 0;
+        liberer(A);
+        (*A) = G;        
         return 1;
     }
     expansion(&(*A)->fg, B);
     expansion(&(*A)->fd, B);
     return 0;
 }
-
-
-
-
-/*
-1. Anemone Camomille Camomille Dahlia Camomille Iris Camomille Lilas Rose 
-
-1.1 Anemone Camomille Camomille Dahlia Camomille Iris Camomille Lilas Rose 
-
-2.1 Anemone Camomille Camomille Dahlia Camomille Lilas Iris Camomille Lilas Rose Rose Iris Camomille Lilas Rose 
-
-2.2 Anemone Camomille Camomille Dahlia Camomille Lilas Iris Rose Camomille Lilas Rose 
-
-*/
-

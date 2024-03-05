@@ -62,7 +62,7 @@ Arbre cree_A_1(){
 }
 
 Arbre cree_A_2(){
-    Arbre a = alloue_noeud("Anemone");
+    Arbre a = alloue_noeud("Anémone");
     a->fg = alloue_noeud("Camomille");
     a->fd = alloue_noeud("Camomille");
     a->fd->fg = alloue_noeud("Dahlia");
