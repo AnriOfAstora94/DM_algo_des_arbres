@@ -11,6 +11,7 @@ Date de création : 23/02/2024
 
 
 Noeud * alloue_noeud(char *s){
+    printf("dans alloue noeud\n");
     Noeud * new = (Noeud *)malloc(sizeof(Noeud));
     if(!new){
         fprintf(stderr, "Erreur d'allocation");

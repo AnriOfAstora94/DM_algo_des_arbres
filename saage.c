@@ -45,7 +45,7 @@ int serialise(char * nom_de_fichier, Arbre A){
         fclose(f);
         return 0;
     }
-    if(!serialise_aux(f, A, i)){
+    if(!serialise_aux(f, A, i)){ // si la sérialisation a échoué on supprime le fichier texte
         int len = 7 + strlen(nom_de_fichier);
         char cmd[len];
         strcpy(cmd, "rm -f ");
@@ -127,59 +127,8 @@ int deserialise(char * nom_de_fichier, Arbre * A){
         return 0;
     }
     deserialise_aux(f, A);
-    //aux(f,A,i, prec); fait pas attention
     fclose(f);
     return 1;
 }
 
 
-
-
-int aux(FILE * f, Arbre *A, int i, int * prec){
-    char  c[100];
-
-    while(fgets(c,512,f) != NULL){
-        i++;
-        printf("dans le while i =%d\n",i);
-        char * mot = strstr(c, "Valeur"); 
-        char * mot2 = strstr(c, "Gauche : NULL");
-        char * mot3 = strstr(c, "Droite : NULL");
-        char * mot4 = strstr(c, "Gauche");
-        char * mot5 = strstr(c, "Droite");
-
-        if(mot){ // On test si on trouve valeur dans la ligne lu par fgets
-            char rep[100];
-            strncpy(rep, mot + 9, strlen(mot + 9)-1);
-            printf("i = %d val : %s\n",i, rep);
-            *A = alloue_noeud(rep);
-            if(!*A){
-                printf("Erreur d'allocation");
-                return -1;
-            }
-        }
-
-        if(mot3 && *prec == 1){
-            printf("dans la cond d'arret i =%d\n",i);
-            return 0;
-        }
-
-        if(mot2){
-            printf("dans le gauche NULL %d\n", i);
-            *prec = 1;
-            (*A)->fg = NULL;
-        }else if(mot4){
-            printf("dans le gauche %d\n",i);
-            *prec = 0;
-            return aux(f,&(*A)->fg, i, prec);
-        }
-        if(mot3){
-            printf("dans le droite NULL i = %d\n", i);
-            (*A)->fd = NULL;
-        }else if(mot5){
-            printf("dans le droite i = %d\n", i);   
-            *prec = 0;  
-            return aux(f,&(*A)->fd, i,prec);
-        }
-    } 
-    return 1;
-}

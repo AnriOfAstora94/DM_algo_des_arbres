@@ -16,6 +16,7 @@ int main(){
     Arbre b = alloue_noeud("binaire");
     b->fg = alloue_noeud("lexicographique");
     b->fd = alloue_noeud("n-aire");
+
     /*
     Arbre b = alloue_noeud("Intel Core i9");
     b->fg = alloue_noeud("Intel Core i9");
@@ -27,7 +28,6 @@ int main(){
     //creePDF("A2.dot", "A2.pdf", a);
     serialise("c.txt", a);
     deserialise("c.txt", &c);
-    affiche(c);
     creePDF("A2.dot", "A2.pdf", c);
     
 
