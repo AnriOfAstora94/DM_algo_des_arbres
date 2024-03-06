@@ -22,7 +22,7 @@ int serialise_aux(FILE * f, Arbre A, int i){
     }
     else{
         indente(f, i);
-        fprintf(f, "Gauche :\n");
+        fprintf(f, "Gauche : \n");
         serialise_aux(f, A->fg, i+1);
     }
     if(!A->fd){
@@ -31,7 +31,7 @@ int serialise_aux(FILE * f, Arbre A, int i){
     }
     else{
         indente(f, i);
-        fprintf(f, "Droite :\n");
+        fprintf(f, "Droite : \n");
         serialise_aux(f, A->fd, i+1);
     }
     return 1;
