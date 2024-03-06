@@ -12,20 +12,18 @@ Noeud * alloue_noeud(char *s){
     Noeud * new = (Noeud *)malloc(sizeof(Noeud));
     if(!new){
         fprintf(stderr, "Erreur d'allocation");
-        free(new);
         return NULL;
     }
     new->val = (char *)malloc(strlen(s) + 1);
     
     if(!new->val){
         fprintf(stderr, "Erreur d'allocation");
-        free(new->val);
+        free(new);
         return NULL;
     }
     strcpy(new->val, s);
     new->fg = NULL;
     new->fd = NULL;
-    printf("fin alloue_noued\n");
     return new;
     
 }
@@ -37,12 +35,8 @@ int aux(FILE * f, Arbre *A){
     char val[50]; // stocke la potentiel valeur du noeud
     if(!fgets(ligne,512,f))
         return 1;
-    //printf("ligne : %s\n", ligne);
     sscanf(ligne, "%s %s %s",ind, dp, val);
-    //printf("ind = %s\n", ind);
     if(strcmp(ind, "Valeur") == 0){
-        if(*A)
-            printf("*A existe\n");
         printf("val : %s\n", val);
         (*A) = alloue_noeud(val);
         if(!*A){
@@ -75,7 +69,6 @@ int aux(FILE * f, Arbre *A){
 int deserialise(char * nom_de_fichier, Arbre * A){
     FILE *f = fopen(nom_de_fichier, "r");
     if(!f){
-        fclose(f);
         return 0;
     }
     
@@ -85,21 +78,13 @@ int deserialise(char * nom_de_fichier, Arbre * A){
 }
 
 int main(){
-    FILE * f = fopen("c.txt", "r");
+    FILE * f = fopen("c.saage", "r");
     if(!f){
         return 0;
     }
-    int **x;
-    int y ;
-    *(x+1) = y;
-    /*
-    char  ligne[100]; // stocke la ligne de texte
-    char ind[10]; //stocke valeur ou gauche ou droite
-    char dp[3]; // stocke le caractere :" "
-    char val[50]; // stocke la potentiel valeur du noeud
-    */
-    //Arbre a = NULL;
 
-    //deserialise("c.txt", &a);
+    Arbre a = NULL;
+
+    deserialise("c.saage", &a);
     return 0;
 }
