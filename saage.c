@@ -22,7 +22,7 @@ int serialise_aux(FILE * f, Arbre A, int i){
     }
     else{
         indente(f, i);
-        fprintf(f, "Gauche :\n");
+        fprintf(f, "Gauche : \n");
         serialise_aux(f, A->fg, i+1);
     }
     if(!A->fd){
@@ -31,7 +31,7 @@ int serialise_aux(FILE * f, Arbre A, int i){
     }
     else{
         indente(f, i);
-        fprintf(f, "Droite :\n");
+        fprintf(f, "Droite : \n");
         serialise_aux(f, A->fd, i+1);
     }
     return 1;
@@ -58,38 +58,33 @@ int serialise(char * nom_de_fichier, Arbre A){
     return 1;
 }
 
-void supprimerEspacesDebut(char *chaine) {
+void suppr_Espaces_Debut(char *chaine) {
     size_t longueur = strlen(chaine);
     size_t i = 0;
 
-    // Trouver le premier caractère non vide
     while (i < longueur && isspace(chaine[i])) {
         i++;
     }
 
-    // Déplacer les caractères non vides au début de la chaîne
     if (i > 0) {
         memmove(chaine, chaine + i, longueur - i + 1);
     }
 }
 
-int extraireValeur(const char *chaine, char *resultat) {
-    // Vérifier la présence du motif "Valeur :"
+int recherche_val(const char *chaine, char *resultat) {
+
     const char *motif = "Valeur :";
     size_t longueurMotif = strlen(motif);
 
-    // Trouver la position du motif dans la chaîne
     const char *positionMotif = strstr(chaine, motif);
 
     if (positionMotif == NULL) {
-        // Motif non trouvé
         return 0;
     }
 
-    // Copier le texte après le motif dans le résultat
     strcpy(resultat, positionMotif + longueurMotif);
 
-    return 1; // Succès
+    return 1;
 }
 
 
@@ -98,23 +93,24 @@ int deserialise_aux(FILE * f, Arbre *A){
     if(!f)
         return 0;
     char c[100];
+    
     fgets(c, 512, f);
-    supprimerEspacesDebut(c);
+    suppr_Espaces_Debut(c);
     c[strcspn(c, "\n")] = '\0';
-    printf("%s\n", c);
-    extraireValeur(c, val);
+
+    recherche_val(c, val);
     *A = alloue_noeud(val);
     fgets(c, 512, f);
-    supprimerEspacesDebut(c);
+    suppr_Espaces_Debut(c);
     c[strcspn(c, "\n")] = '\0';
-    printf("%s\n", c);
-    if(!strcmp(c, "Gauche :"))
+
+    if(!strcmp(c, "Gauche : "))
         deserialise_aux(f, &(*A)->fg);
     fgets(c, 512, f);
-    supprimerEspacesDebut(c);
+    suppr_Espaces_Debut(c);
     c[strcspn(c, "\n")] = '\0';
-    printf("%s\n", c);
-    if(!strcmp(c, "Droite :"))
+
+    if(!strcmp(c, "Droite : "))
         deserialise_aux(f, &(*A)->fd);
     return 1;
 }
@@ -130,5 +126,3 @@ int deserialise(char * nom_de_fichier, Arbre * A){
     fclose(f);
     return 1;
 }
-
-

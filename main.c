@@ -12,11 +12,10 @@ Date de création : 23/02/2024
 
 
 int main(){
-    Arbre a = cree_A_1();
+    Arbre a = cree_A_2();
     Arbre b = alloue_noeud("binaire");
     b->fg = alloue_noeud("lexicographique");
     b->fd = alloue_noeud("n-aire");
-
     /*
     Arbre b = alloue_noeud("Intel Core i9");
     b->fg = alloue_noeud("Intel Core i9");
@@ -26,8 +25,8 @@ int main(){
     expansion(&a, b);
     Arbre c = NULL;
     //creePDF("A2.dot", "A2.pdf", a);
-    serialise("c.txt", a);
-    deserialise("c.txt", &c);
+    serialise("c.saage", a);
+    deserialise("c.saage", &c);
     creePDF("A2.dot", "A2.pdf", c);
     
 
