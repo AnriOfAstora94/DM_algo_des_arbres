@@ -11,17 +11,15 @@ Date de création : 23/02/2024
 
 
 Noeud * alloue_noeud(char *s){
-    printf("dans alloue noeud\n");
     Noeud * new = (Noeud *)malloc(sizeof(Noeud));
     if(!new){
         fprintf(stderr, "Erreur d'allocation");
-        free(new);
         return NULL;
     }
     new->val = (char *)malloc(strlen(s) + 1);
     if(!new->val){
         fprintf(stderr, "Erreur d'allocation");
-        free(new->val);
+        free(new);
         return NULL;
     }
     strcpy(new->val, s);
@@ -57,8 +55,18 @@ void affiche(Arbre a){
 
 Arbre cree_A_1(){
     Arbre a = alloue_noeud("arbre");
+    if(!a)
+        return NULL;
     a->fg = alloue_noeud("binaire");
+    if(!a->fg){
+        free(&a);
+        return NULL;
+    }
     a->fd = alloue_noeud("ternaire");
+    if(!a->fd){
+        free(&a);
+        return NULL;
+    }
     return a;
 }
 
