@@ -31,11 +31,12 @@ int main(int argc, char ** argv){
     }
 
     if(strcmp(argv[1], "-E") == 0){
-        /*
-        int construit arbre ici
-        serialise(Arbre);
-        */
-        return 1;
+        Arbre A = NULL;
+        if(!construit_arbre(&A))
+            return 0;
+        if(serialise(argv[2], A))
+            return 1;
+        return 0;
     }
 
     if((strcmp(argv[1], "-G") == 0) && argv[2] && argv[3]){  
@@ -48,6 +49,9 @@ int main(int argc, char ** argv){
             return 0;
         affiche_std("res.saage");
         liberer(&A);
+    }else{
+        printf("Pas assez d'arguments pour l'option -G\n");
+        return 0;
     }
     
 

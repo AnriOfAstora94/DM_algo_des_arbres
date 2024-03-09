@@ -33,7 +33,7 @@ int greffeG(Arbre * G, Noeud * n){
     if(!*G)                           //Greffon null
         return 0;
     if(!(*G)->fg){                    //Pas de fils gauche
-        if(!copie(&(*G)->fg, n->fg)){
+        if(!copie(&(*G)->fg, n->fg)){ 
             printf("Echec de la copie\n");
             return 0;
         }
@@ -72,7 +72,7 @@ int expansion(Arbre * A, Arbre B){
             printf("Echec de la copie\n");
             return 0;
         }       
-        if(!greffeG(&G, *A) ||!greffeD(&G, *A)){    //Test si les greffes du sous-agre gauche et droit se sont bien passés
+        if(!greffeG(&G, *A) ||!greffeD(&G, *A)){    //Test si les greffes du sous-arbre gauche et droit se sont bien passées
             free(&G);
             return 0;
         }  
