@@ -92,11 +92,32 @@ Arbre cree_A_3(){
 }
 
 int construit_arbre(Arbre *a){
-    
+    int sous_arbre_gauche;
+    int sous_arbre_droit;
+    char donnee[50];
+
+    printf("Entrez 1 pour indiquer s'il y a une valeur : \n");
+    scanf("%d", &sous_arbre_gauche);
+
+    printf("Entrez la valeur du noeud (50 caractères max) : \n");
+    scanf("%s", &donnee);
+
+
 
     return 1;
 }
 
+int construit_arbre_aux(Arbre *a){
+        int sous_arbre_gauche;
+    int sous_arbre_droit;
+    char donnee[50];
+
+    printf("Entrez 1 pour indiquer s'il y a une valeur : \n");
+    scanf("%d", &sous_arbre_gauche);
+
+    printf("Entrez la valeur du noeud (50 caractères max) : \n");
+    scanf("%s", &donnee);
+}
 
 void ecrireDebut(FILE *f){
     fprintf(f,"digraph arbre {\n");
