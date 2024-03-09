@@ -1,10 +1,10 @@
-### Rapport DM_algo_des_arbres
+# Rapport DM_algo_des_arbres
 RABE Iarimbola 
 PÉGOURIÉ Benjamin
 
 ## Fonctions implémentés
 
-# Fonctions demandés
+### Fonctions demandés
 
 En accord avec le travail nécessaire à effectuer dans le sujet du devoir maison, nous avons
 débuter par effectuer le découpage et la création des fichiers nécessaires au bon fonctionnement
@@ -17,7 +17,7 @@ en respectant bien entendu les prototypes donnés dans le sujet.
 Nous avons terminé par l'écriture du main (qui ne servait qu'à vérifier le bon fonctionnement de nos différentes fonctions
 jusqu'à maintenant) et du rapport.
 
-# Fonctions intermédiaires
+### Fonctions intermédiaires
 
 En dehors des fonctions de manipulations d'Arbre tel que liberer, alloue_noeud, entre autres fonctions usuelles au rôle évident,
 
