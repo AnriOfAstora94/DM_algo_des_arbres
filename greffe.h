@@ -48,6 +48,5 @@ int greffeD(Arbre * G, Noeud * n);
 */
 int expansion(Arbre * A, Arbre B);
 
-void greffeDroite(Arbre *n, Arbre sousArbre);
 #endif
 
