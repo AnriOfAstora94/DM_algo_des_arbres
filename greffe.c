@@ -10,7 +10,6 @@ Date de création : 23/02/2024
 
 
 
-
 int copie(Arbre * dest, Arbre source){
     if(!source)
         return 1;

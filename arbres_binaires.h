@@ -14,24 +14,6 @@ typedef struct _noeud{
 
 
 /**
- * @brief La fonction affiche affiche un Arbre en faisant appel à affiche_aux et passe à la ligne une fois l'affichage terminé
- * 
- * @param a Arbre à afficher
- * 
- * @return void
-*/
-void affiche(Arbre a);
-
-/**
- * @brief La fonction affiche_aux affiche les valeurs d'un arbre comme un parcours préfixe
- * 
- * @param a Arbre à afficher
- * 
- * @return void
-*/
-void affiche_aux(Arbre a);
-
-/**
  * @brief La fonction alloue_noeud renvoie le noeud après l'avoir alloué en mémoire et initialisé sa valeur à s, renvoie NULL si l'allocation échoue
  * 
  * @param s La chaîne de caractère représentant la valeur à initialiser

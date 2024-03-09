@@ -39,20 +39,7 @@ void liberer(Arbre *A){
     }
 }
 
-void affiche_aux(Arbre a){      //affichage préfixe
-    if(a){
-        printf("%s ", a->val);
-        affiche_aux(a->fg);
-        affiche_aux(a->fd);
-    }
-}
 
-void affiche(Arbre a){      //affichage préfixe
-    if(a){
-        affiche_aux(a);
-        printf("\n");
-    }
-}
 
 Arbre cree_A_1(){
     Arbre a = alloue_noeud("arbre");

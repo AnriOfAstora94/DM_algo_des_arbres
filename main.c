@@ -37,8 +37,10 @@ int main(int argc, char ** argv){
         Arbre A = NULL;
         if(!construit_arbre(&A))
             return 0;
-        if(serialise(argv[2], A))
+        if(serialise(argv[2], A)){
+            liberer(&A);
             return 1;
+        }
         return 0;
     }
 
@@ -52,6 +54,7 @@ int main(int argc, char ** argv){
             return 0;
         affiche_std("res.saage");
         liberer(&A);
+        liberer(&G);
     }else{
         printf("Pas assez d'arguments pour l'option -G\n");
         return 0;
