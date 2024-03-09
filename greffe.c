@@ -30,17 +30,17 @@ int copie(Arbre * dest, Arbre source){
 
 
 int greffeG(Arbre * G, Noeud * n){
-    if(!*G)
+    if(!*G)                           //Greffon null
         return 0;
-    if(!(*G)->fg){
+    if(!(*G)->fg){                    //Pas de fils gauche
         if(!copie(&(*G)->fg, n->fg)){
             printf("Echec de la copie\n");
             return 0;
         }
         
     }else{
-        greffeG(&(*G)->fg, n);
-        greffeD(&(*G)->fg, n);
+        greffeG(&(*G)->fg, n);      //On greffe le sous-arbre gauche au fg
+        greffeD(&(*G)->fg, n);      //On greffe le sous-arbre gauche au fd
     }
     return 1;
 }
@@ -48,31 +48,31 @@ int greffeG(Arbre * G, Noeud * n){
 int greffeD(Arbre *G, Noeud * n){
     if(!*G)
         return 0;
-    if(!(*G)->fd){
+    if(!(*G)->fd){                 //Pas de fils droit
         if(!copie(&(*G)->fd, n->fd)){
             printf("Echec de la copie\n");
             return 0;
         }
     }else{
-        greffeD(&(*G)->fd, n);
-        greffeG(&(*G)->fd, n);
+        greffeD(&(*G)->fd, n);      //On greffe le sous-arbre droit au fd
+        greffeG(&(*G)->fd, n);      //On greffe le sous-arbre droit au fg
     }
     return 1;
 }
 
 
 int expansion(Arbre * A, Arbre B){
-    if(!*A)
+    if(!*A)                         //Arbre null
         return 0;
-    if(strcmp((*A)->val, B->val) == 0 ){
-        expansion(&(*A)->fg, B);
-        expansion(&(*A)->fd, B);
+    if(strcmp((*A)->val, B->val) == 0 ){        //La valeur est égal, il faut faire une greffe
+        expansion(&(*A)->fg, B);                //On fait le sous-arbre gauche
+        expansion(&(*A)->fd, B);                //On fait le sous-arbre droit
         Arbre G = NULL;
-        if(!copie(&G, B)){
+        if(!copie(&G, B)){                      //Cas d'échec de copie
             printf("Echec de la copie\n");
             return 0;
         }       
-        if(!greffeG(&G, *A) ||!greffeD(&G, *A)){
+        if(!greffeG(&G, *A) ||!greffeD(&G, *A)){    //Test si les greffes du sous-agre gauche et droit se sont bien passés
             free(&G);
             return 0;
         }  
@@ -80,7 +80,7 @@ int expansion(Arbre * A, Arbre B){
         (*A) = G;        
         return 1;
     }
-    expansion(&(*A)->fg, B);
-    expansion(&(*A)->fd, B);
-    return 1;
+    expansion(&(*A)->fg, B);        //On fait le sous-arbre gauche
+    expansion(&(*A)->fd, B);        //On fait le sous-arbre droit
+    return 1;                       //Tout s'est bien passé
 }

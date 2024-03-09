@@ -12,12 +12,12 @@ Date de création : 23/02/2024
 
 Noeud * alloue_noeud(char *s){
     Noeud * new = (Noeud *)malloc(sizeof(Noeud));
-    if(!new){
+    if(!new){                                       //Teste si l'allocation est un succès
         fprintf(stderr, "Erreur d'allocation");
         return NULL;
     }
     new->val = (char *)malloc(strlen(s) + 1);
-    if(!new->val){
+    if(!new->val){                                  //Teste le malloc
         fprintf(stderr, "Erreur d'allocation");
         free(new);
         return NULL;
@@ -25,11 +25,11 @@ Noeud * alloue_noeud(char *s){
     strcpy(new->val, s);
     new->fg = NULL;
     new->fd = NULL;
-    return new;
+    return new;         //On renvoie la valeure créée
 }
 
 void liberer(Arbre *A){
-    if(*A){
+    if(*A){                 //Si l'arbre existe on libère le fg puis fd puis le noeud
         liberer(&(*A)->fg);
         liberer(&(*A)->fd);
         free((*A)->val);
@@ -38,7 +38,7 @@ void liberer(Arbre *A){
     }
 }
 
-void affiche_aux(Arbre a){
+void affiche_aux(Arbre a){      //affichage préfixe
     if(a){
         printf("%s ", a->val);
         affiche_aux(a->fg);
@@ -46,7 +46,7 @@ void affiche_aux(Arbre a){
     }
 }
 
-void affiche(Arbre a){
+void affiche(Arbre a){      //affichage préfixe
     if(a){
         affiche_aux(a);
         printf("\n");
@@ -55,7 +55,7 @@ void affiche(Arbre a){
 
 Arbre cree_A_1(){
     Arbre a = alloue_noeud("arbre");
-    if(!a)
+    if(!a)                              //Test des allocations
         return NULL;
     a->fg = alloue_noeud("binaire");
     if(!a->fg){
@@ -67,7 +67,7 @@ Arbre cree_A_1(){
         free(&a);
         return NULL;
     }
-    return a;
+    return a;       //On renvoie l'arbre construit
 }
 
 Arbre cree_A_2(){
@@ -78,7 +78,7 @@ Arbre cree_A_2(){
     a->fd->fg->fd = alloue_noeud("Camomille");
     a->fd->fg->fd->fg = alloue_noeud("Iris");
     a->fd->fg->fd->fd = alloue_noeud("Jasmin");
-    return a;
+    return a;       //On renvoie l'arbre construit
 }
 
 Arbre cree_A_3(){
@@ -88,14 +88,36 @@ Arbre cree_A_3(){
     a->fg->fd->fg = alloue_noeud("Intel Core i9");
     a->fd = alloue_noeud("Intel Core i9");
     a->fd->fg = alloue_noeud("Intel Core i9");
-    return a;
+    return a;       //On renvoie l'arbre construit
 }
 
 int construit_arbre(Arbre *a){
+    int sous_arbre_gauche;
+    int sous_arbre_droit;
+    char donnee[50];
+
+    printf("Entrez 1 pour indiquer s'il y a une valeur : \n");
+    scanf("%d", &sous_arbre_gauche);
+
+    printf("Entrez la valeur du noeud (50 caractères max) : \n");
+    scanf("%s", &donnee);
+
+
 
     return 1;
 }
 
+int construit_arbre_aux(Arbre *a){
+        int sous_arbre_gauche;
+    int sous_arbre_droit;
+    char donnee[50];
+
+    printf("Entrez 1 pour indiquer s'il y a une valeur : \n");
+    scanf("%d", &sous_arbre_gauche);
+
+    printf("Entrez la valeur du noeud (50 caractères max) : \n");
+    scanf("%s", &donnee);
+}
 
 void ecrireDebut(FILE *f){
     fprintf(f,"digraph arbre {\n");

@@ -14,58 +14,79 @@ typedef struct _noeud{
 
 
 /**
- * La fonction affiche affiche un Arbre en faisant appel à affiche_aux et passe à la ligne une fois l'affichage terminé
+ * @brief La fonction affiche affiche un Arbre en faisant appel à affiche_aux et passe à la ligne une fois l'affichage terminé
+ * 
  * @param a Arbre à afficher
+ * 
+ * @return void
 */
 void affiche(Arbre a);
 
 /**
- * La fonction affiche_aux affiche les valeurs d'un arbre comme un parcours préfixe
+ * @brief La fonction affiche_aux affiche les valeurs d'un arbre comme un parcours préfixe
+ * 
  * @param a Arbre à afficher
+ * 
+ * @return void
 */
 void affiche_aux(Arbre a);
 
 /**
- * Fonction qui renvoie l'adresse du noeud le plus profond ayant comme val la chaine de caractère contenu dans * s
- * @param a Arbre a dont on recherche un élément
- * @param s La chaîne de caractère recherché
-*/
-//Noeud * recherche_plus_profond(Arbre a, char *s);
-
-/**
- * La fonction alloue_noeud renvoie le noeud après l'avoir alloué en mémoire et initialisé sa valeur à s, renvoie NULL si l'allocation échoue
+ * @brief La fonction alloue_noeud renvoie le noeud après l'avoir alloué en mémoire et initialisé sa valeur à s, renvoie NULL si l'allocation échoue
+ * 
  * @param s La chaîne de caractère représentant la valeur à initialiser
+ * 
+ * @return Noeud
 */
 Noeud * alloue_noeud(char *s);
 
 /**
- * La fonction liberer libère l'espace mémoire utilisé par un Arbre
+ * @brief La fonction liberer libère l'espace mémoire utilisé par un Arbre
+ * 
  * @param A l'Arbre dont on libère la mémoire
+ * 
+ * @return void
 */
 void liberer(Arbre * A);
 
 /**
- * La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+ * @brief La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+ * 
+ * @return Arbre
 */
 Arbre cree_A_1();
 
 /**
  * La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+ * 
+ * @return Arbre
 */
 Arbre cree_A_2();
 
 /**
- * La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+ * @brief La fonction cree_A_1 crée l'arbre A_1 donné dans les exemples du sujets
+ * 
+ * @return Arbre
 */
 Arbre cree_A_3();
 
 /**
- * La fonction construit_arbre permet de construire un arbre avec un parcours infixe
+ * @brief La fonction construit_arbre permet de construire un arbre avec un parcours préfixe
+ * 
  * @param a adresse de l'arbre qui sera construit
+ * 
+ * @return int
 */
 int construit_arbre(Arbre *a);
 
-int construit_arbre(Arbre *a);
+/**
+ * @brief La fonction construit_arbre_aux s'occupe du travail récursif de construit_arbre
+ * 
+ * @param a adresse de l'arbre qui sera construit
+ * 
+ * @return int
+*/
+int construit_arbre_aux(Arbre *a);
 
 void ecrireDebut(FILE *f);
 void ecrireFin(FILE *f);
