@@ -60,11 +60,9 @@ Arbre cree_A_2();
 Arbre cree_A_3();
 
 /**
- * La fonction construit_arbre permet de construire un arbre avec un parcours infixe
+ * La fonction construit_arbre permet de construire un arbre avec un parcours préfixe
  * @param a adresse de l'arbre qui sera construit
 */
-int construit_arbre(Arbre *a);
-
 int construit_arbre(Arbre *a);
 
 void ecrireDebut(FILE *f);
