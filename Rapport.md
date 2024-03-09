@@ -35,6 +35,12 @@ saage à la place des entrées d'un humain, l'indentation n'ayant aucune importa
 suppr_Espaces_Debut qui comme son nom l'indique, supprime les espaces au début d'une chaîne de caractère afin de se débarasser d'une éventuelle indentation, deserialisation_aux utilise également la fonction recherche_val qui, après avoir reçu une ligne ayant une structure tel que
 "Valeur : 'donnee'" (donnee représentant ici la valeure du noeud), effectue l'extraction de la donnée et la renvoie à deserialisation_aux pour
 l'allocation d'un nouveau noeud.
+La fonction construit_arbre utilise également une version auxiliaire, n'ayant pû déceler la signification du premier 1 dans les exemples de saisies,
+nous avons fait le choix d'utiliser construit_arbre pour traiter ce premier 1 comme signalant si l'arbre et vide ou non. Si la réponse est 1,
+nous utilisons construit_arbre_aux pour récuperer la valeur à donner au noeud que l'on traite, on réclame ensuite un 0 ou 1 pour savoir s'il y a un sous-arbre gauche que l'on traite le cas échéant.
+Puis cette méthode est répété pour le sous-arbre droit.
+
+
 
 Dans le cas des autres fonctions, nous n'avons pas jugés nécessaires d'utiliser plus de fonctions intermédiaires, leur rôle semblant
 relativement simple.
@@ -52,12 +58,12 @@ d'un sous-arbre gauche non nul, et celui attendu s'est en fait révélé être "
 
 RABE Iarimbola a débuté le DM en créant les fichiers et le makefile, il a ensuite implémenté les fonctions de manipulation d'arbre
 que nous avons utilisés et la fonction expansion, une part massive du travail. Il a également finalisé la fonction serialisation et déceler
-l'espace maudit, il a également effectué l'écriture du main qui nous a servi de test.
+l'espace maudit, il a également effectué l'écriture du main.
 Quand à moi, PÉGOURIÉ Benjamin (je me permets d'utiliser la première personne ici), j'ai effectué l'implémentation des fonctions creer_A1/2/3,
-ainsi que la fonction deserialisation, et une quantités non négligeables de documantation pour nos diverses fonctions.
+ainsi que la fonction deserialisation, également, j'ai éffectué construit_arbre, et une quantités non négligeables de documantation pour nos diverses fonctions.
 Également, vous l'aurez sans doute déjà remarqué, je me suis chargé de l'écriture de ce rapport.
 Bien sûr ce découpage est assez grossier, et il est arrivé plus d'une fois que l'on travaille et réflechisse ensemble
 sûr des problèmes particulièrement retorses.
-### à compléter quand il y aura construire_arbre et le vrai main
+
 
 # Merci de nous avoir lus
