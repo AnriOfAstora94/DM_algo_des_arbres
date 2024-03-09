@@ -6,6 +6,7 @@ Date de création : 23/02/2024
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 #include "arbres_binaires.h"
 
 
@@ -91,9 +92,24 @@ Arbre cree_A_3(){
     return a;       //On renvoie l'arbre construit
 }
 
+
+void suppr_Espaces_Debut(char *chaine) {
+    size_t longueur = strlen(chaine);   //Stock la longeur de la chaîne
+    size_t i = 0;
+
+    while (i < longueur && isspace(chaine[i])) {    //Tant qu'on trouve un espace ou qu'on est pas sorti de la chaîne on supprime et on passe au suivant
+        i++;
+    }
+
+    if (i > 0) {
+        memmove(chaine, chaine + i, longueur - i + 1);  //On remet le début de la chaîne au début de la chaîne
+    }
+}
+
+
 int construit_arbre(Arbre *a){
     int vide_ou_non;
-    printf("Entrez 1 ou 0 (0 pour quitter, 1 pour entrez la racine) : \n");
+    printf("Entrez 1 + la chaine de caractère ou 0 (ex : 1 arbre || 0 ) : \n");
     scanf("%d", &vide_ou_non);
 
     if(vide_ou_non)                     //On fait un parcours préfixe
@@ -105,18 +121,21 @@ int construit_arbre(Arbre *a){
 int construit_arbre_aux(Arbre *a){
     int sous_arbre_gauche;
     int sous_arbre_droit;
-    char donnee[50];
-
-    printf("Entrez la valeur du noeud (50 caractères max) : \n");
-    scanf("%s", donnee);
-    *a = alloue_noeud(donnee);      //Attribue la valeur du noeud
-
-    printf("Y-a t'il un sous-arbre gauche ? (1 = oui; 0 = non;) \n");   //Sous-arbre gauche
+    char donnee[50];    
+    fgets(donnee, 50, stdin);
+    suppr_Espaces_Debut(donnee);
+    donnee[strcspn(donnee, "\n")] = '\0'; //Remplace le \n à la fin de la ligne par un fin de chaîne
+    *a = alloue_noeud(donnee); //Attribue la valeur du noeud
+    if(!*a){
+        printf("Erreur d'allocation\n");
+        return -1;
+    }     
+    printf("Y-a t'il un sous-arbre gauche ? (ex : 1 binaire || 0 ) \n");   //Sous-arbre gauche
     scanf("%d", &sous_arbre_gauche);
     if(sous_arbre_gauche)   //Test s'il y a un sous-arbre gauche
         construit_arbre_aux(&(*a)->fg);
     
-    printf("Y-a t'il un sous-arbre droit ? (1 = oui; 0 = non;) \n");   //Sous-arbre droit
+    printf("Y-a t'il un sous-arbre droit ? (ex : 1 ternaire || 0) \n");   //Sous-arbre droit
     scanf("%d", &sous_arbre_droit);
     if(sous_arbre_droit)   //Test s'il y a un sous-arbre droit
         construit_arbre_aux(&(*a)->fd);

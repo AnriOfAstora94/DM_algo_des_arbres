@@ -42,9 +42,9 @@ Les fonctions ``sérialise`` et ``déserialise`` utilisent toutes deux une fonct
 ``deserialise_aux`` est également récursive et reprends le principe d'une saisie utilisateur préfixe, simplement, elle lit un fichier saage à la place des entrées d'un humain, l'indentation n'ayant aucune importance pour la conversion en mémoire, nous avons ajouté une fonction
 
 ``suppr_Espaces_Debut`` qui comme son nom l'indique, supprime les espaces au début d'une chaîne de caractère afin de se débarasser d'une éventuelle indentation, deserialisation_aux utilise également la fonction recherche_val qui, après avoir reçu une ligne ayant une structure tel que
-"Valeur : 'donnee'" (donnee représentant ici la valeure du noeud), effectue l'extraction de la donnée et la renvoie à deserialisation_aux pour l'allocation d'un nouveau noeud.
+"Valeur : 'donnee'" (donnee représentant ici la valeur du noeud), effectue l'extraction de la donnée et la renvoie à deserialisation_aux pour l'allocation d'un nouveau noeud.
 
-La fonction ``construit_arbre`` utilise également une version auxiliaire, n'ayant pû déceler la signification du premier 1 dans les exemples de saisies,nous avons fait le choix d'utiliser construit_arbre pour traiter ce premier 1 comme signalant si l'arbre et vide ou non. Si la réponse est 1, nous utilisons construit_arbre_aux pour récuperer la valeur à donner au noeud que l'on traite, on réclame ensuite un 0 ou 1 pour savoir s'il y a un sous-arbre gauche que l'on traite le cas échéant.
+La fonction ``construit_arbre`` utilise ``suppr_Espaces_Debut`` ainsi qu'une fonction auxiliaire ``construit_arbre_aux``, n'ayant pû déceler la signification du premier 1 dans les exemples de saisies,nous avons fait le choix d'utiliser construit_arbre pour traiter ce premier 1 comme signalant si l'arbre et vide ou non. Si la réponse est 1, nous utilisons construit_arbre_aux pour récuperer la valeur à donner au noeud que l'on traite, on réclame ensuite un 0 ou 1 + valeur de la chaine pour savoir s'il y a un sous-arbre gauche que l'on traite le cas échéant.
 Puis cette méthode est répété pour le sous-arbre droit.
 
 Dans le cas des autres fonctions, nous n'avons pas jugés nécessaires d'utiliser plus de fonctions intermédiaires, leur rôle semblant relativement simple.

@@ -70,6 +70,21 @@ Arbre cree_A_2();
 */
 Arbre cree_A_3();
 
+
+
+void suppr_Espaces_Debut(char *chaine);
+
+/**
+ * @brief La fonction recherche_val extrait la valeur dans une ligne de fichier saage contenant une valeur
+ * 
+ * @param chaine la chaîne où l'on effectue la recherche
+ * @param resultat la chaîne où l'on stocke le résultat
+ * 
+ * @return void
+*/
+
+
+
 /**
  * @brief La fonction construit_arbre permet de construire un arbre avec un parcours préfixe
  * 
@@ -88,10 +103,6 @@ int construit_arbre(Arbre *a);
 */
 int construit_arbre_aux(Arbre *a);
 
-void ecrireDebut(FILE *f);
-void ecrireFin(FILE *f);
-void ecrireArbre(FILE *f, Arbre a);
-void dessine(FILE *f, Arbre a);
-void creePDF(char *dot, char *pdf, Arbre a);
+
 #endif
 

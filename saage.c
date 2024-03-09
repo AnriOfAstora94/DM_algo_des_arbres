@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <ctype.h>
+
 #include "saage.h"
 
 void indente(FILE * f, int  i){
@@ -58,18 +58,7 @@ int serialise(char * nom_de_fichier, Arbre A){
     return 1;
 }
 
-void suppr_Espaces_Debut(char *chaine) {
-    size_t longueur = strlen(chaine);   //Stock la longeur de la chaîne
-    size_t i = 0;
 
-    while (i < longueur && isspace(chaine[i])) {    //Tant qu'on trouve un espace ou qu'on est pas sorti de la chaîne on supprime et on passe au suivant
-        i++;
-    }
-
-    if (i > 0) {
-        memmove(chaine, chaine + i, longueur - i + 1);  //On remet le début de la chaîne au début de la chaîne
-    }
-}
 
 int recherche_val(const char *chaine, char *resultat) {
 

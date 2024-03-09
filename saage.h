@@ -44,16 +44,8 @@ int serialise(char * nom_de_fichier, Arbre A);
  * 
  * @return void
 */
-void suppr_Espaces_Debut(char *chaine);
 
-/**
- * @brief La fonction recherche_val extrait la valeur dans une ligne de fichier saage contenant une valeur
- * 
- * @param chaine la chaîne où l'on effectue la recherche
- * @param resultat la chaîne où l'on stocke le résultat
- * 
- * @return int
-*/
+
 int recherche_val(const char *chaine, char *resultat);
 
 /**
