@@ -1,10 +1,26 @@
-### Rapport DM_algo_des_arbres
+---
+Rapport DM_algo_des_arbres
+Greffes génétiquement modifiées d’un arbre binaire
 RABE Iarimbola 
 PÉGOURIÉ Benjamin
+2024-2025
+---
 
-## Fonctions implémentés
 
-# Fonctions demandés
+# Manuel d'utilisation 
+
+Compile le programme avec la commande make qui produit un executable ./saage
+Execute le programme de la manière suivante : ./saage -E fichier.saage (*)
+                                        ou  : ./saage -G fichier1.saage fichier2.saage (**)
+
+(*) L'utilisateur saisit un arbre au clavier et il est stocké dans le fichier **.saage**
+
+(**) Crée l’arbre où le greffon fichier2.saage est appliqué à l’arbre source stocké dans
+fichier1.saage. Le résultat de la greffe est affiché sur la sortie standard au format .saage
+
+# Fonctions implémentés
+
+## Fonctions demandés
 
 En accord avec le travail nécessaire à effectuer dans le sujet du devoir maison, nous avons
 débuter par effectuer le découpage et la création des fichiers nécessaires au bon fonctionnement
@@ -17,7 +33,7 @@ en respectant bien entendu les prototypes donnés dans le sujet.
 Nous avons terminé par l'écriture du main (qui ne servait qu'à vérifier le bon fonctionnement de nos différentes fonctions
 jusqu'à maintenant) et du rapport.
 
-# Fonctions intermédiaires
+## Fonctions intermédiaires
 
 En dehors des fonctions de manipulations d'Arbre tel que liberer, alloue_noeud, entre autres fonctions usuelles au rôle évident,
 
@@ -39,7 +55,7 @@ l'allocation d'un nouveau noeud.
 Dans le cas des autres fonctions, nous n'avons pas jugés nécessaires d'utiliser plus de fonctions intermédiaires, leur rôle semblant
 relativement simple.
 
-## Difficultés rencontrés
+# Difficultés rencontrés
 
 Nous avons eu un certains nombres de difficultés lors de la réalisation du devoir, notamment une ambiguité entre parcours infixe et préfixe dans
 le sujet, les exemples montrant un parcours préfixe, alors que l'énoncé textuel demande un parcours infixe.
@@ -48,7 +64,7 @@ bien représenter les problèmes que pose l'implémentation de ces fonctions (no
 Un fameux espace a également posé problème lors du test de serialisation, le format utilisé par notre fonction étant "Gauche :\n" dnas le cas
 d'un sous-arbre gauche non nul, et celui attendu s'est en fait révélé être "Gauche : \n".
 
-## Répartition du travail
+# Répartition du travail
 
 RABE Iarimbola a débuté le DM en créant les fichiers et le makefile, il a ensuite implémenté les fonctions de manipulation d'arbre
 que nous avons utilisés et la fonction expansion, une part massive du travail. Il a également finalisé la fonction serialisation et déceler
