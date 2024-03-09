@@ -73,7 +73,7 @@ void suppr_Espaces_Debut(char *chaine) {
 
 int recherche_val(const char *chaine, char *resultat) {
 
-    const char *motif = "Valeur :";
+    const char *motif = "Valeur : ";
     size_t longueurMotif = strlen(motif);
 
     const char *positionMotif = strstr(chaine, motif);

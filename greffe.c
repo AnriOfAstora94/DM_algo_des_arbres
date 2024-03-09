@@ -28,6 +28,7 @@ int copie(Arbre * dest, Arbre source){
     return 1;
 }
 
+
 int greffeG(Arbre * G, Noeud * n){
     if(!*G)
         return 0;
@@ -81,5 +82,5 @@ int expansion(Arbre * A, Arbre B){
     }
     expansion(&(*A)->fg, B);
     expansion(&(*A)->fd, B);
-    return 0;
+    return 1;
 }
