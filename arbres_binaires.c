@@ -97,7 +97,7 @@ int construit_arbre(Arbre *a){
     scanf("%d", &vide_ou_non);
 
     if(vide_ou_non)                     //On fait un parcours préfixe
-        return construit_arbre_aux(&a);
+        return construit_arbre_aux(a);
 
     return 0;   // On fait rien
 }
@@ -108,7 +108,7 @@ int construit_arbre_aux(Arbre *a){
     char donnee[50];
 
     printf("Entrez la valeur du noeud (50 caractères max) : \n");
-    scanf("%s", &donnee);
+    scanf("%s", donnee);
     *a = alloue_noeud(donnee);      //Attribue la valeur du noeud
 
     printf("Y-a t'il un sous-arbre gauche ? (1 = oui; 0 = non;) \n");   //Sous-arbre gauche
@@ -123,50 +123,6 @@ int construit_arbre_aux(Arbre *a){
 
     return 1;   //On a fini tout s'est bien passé (pas d'erreur de malloc dans alloue_noeud)
 
-}
-
-void ecrireDebut(FILE *f){
-    fprintf(f,"digraph arbre {\n");
-    fprintf(f, "node [shape=record, height=.1]\n");
-    fprintf(f,"edge [tailclip=false, arrowtail = dot, dir=both];\n");
-}
-
-void ecrireFin(FILE *f){
-    fprintf(f,"}\n");
-}
-
-void ecrireArbre(FILE *f, Arbre a){
-    if (a != NULL){
-        fprintf(f,"n%p [label=\"<gauche > | <valeur > %s | <droite >\"]",a,a->val);
-        if (a->fd != NULL){
-            fprintf(f,"n%p:droite:c -> n%p:valeur\n",a,a->fd);
-            ecrireArbre(f,a->fd);
-        }
-        if (a->fg != NULL){
-            fprintf(f,"n%p:gauche:c -> n%p:valeur\n",a,a->fg);
-            ecrireArbre(f,a->fg);
-        }
-    }
-    return;
-}
-
-void dessine(FILE *f, Arbre a){
-    ecrireDebut(f);
-    ecrireArbre(f, a);
-    ecrireFin(f);
-}
-
-
-void creePDF(char *dot, char *pdf, Arbre a){
-    FILE *out=fopen(dot,"w");
-    dessine(out,a);
-    fclose(out);
-    int len = strlen(dot) + strlen(pdf) + 15; char cmd[len];
-    strcpy(cmd, "dot -Tpdf ");
-    strcat(cmd, dot);
-    strcat(cmd, " -o ");
-    strcat(cmd, pdf);
-    system(cmd); 
 }
 
 

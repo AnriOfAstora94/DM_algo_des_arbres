@@ -10,7 +10,10 @@ Date de création : 23/02/2024
 #include "saage.h"
 
 
-int affiche_std(char * nom_fichier){
+/*
+Fonction qui affiche sur la sortie standard le contenu d'un fichier texte
+*/
+int affiche_std(char * nom_fichier){ 
     FILE * f = fopen(nom_fichier, "r");
     if(!f){
         printf("Erreur ouverture du fichier\n");
@@ -25,7 +28,7 @@ int affiche_std(char * nom_fichier){
 }
 
 int main(int argc, char ** argv){
-    if(argc < 2){
+    if(argc < 3){
         printf("Pas assez d'arguments\n");
         return 0;
     }
