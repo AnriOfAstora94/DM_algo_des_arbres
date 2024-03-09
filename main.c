@@ -31,7 +31,10 @@ int main(int argc, char ** argv){
     }
 
     if(strcmp(argv[1], "-E") == 0){
-        //int construit arbre ici
+        /*
+        int construit arbre ici
+        serialise(Arbre);
+        */
         return 1;
     }
 
