@@ -60,12 +60,12 @@ Arbre cree_A_1(){
         return NULL;
     a->fg = alloue_noeud("binaire");
     if(!a->fg){
-        free(&a);
+        liberer(&a);
         return NULL;
     }
     a->fd = alloue_noeud("ternaire");
     if(!a->fd){
-        free(&a);
+        liberer(&a);
         return NULL;
     }
     return a;       //On renvoie l'arbre construit
@@ -73,22 +73,70 @@ Arbre cree_A_1(){
 
 Arbre cree_A_2(){
     Arbre a = alloue_noeud("Anémone");
+    if(!a)
+        return NULL;
     a->fg = alloue_noeud("Camomille");
+    if(!a->fg){
+        liberer(&a);
+        return NULL;
+    }
     a->fd = alloue_noeud("Camomille");
+    if(!a->fd){
+        liberer(&a);
+        return NULL;
+    }
     a->fd->fg = alloue_noeud("Dahlia");
+    if(!a->fd->fg){
+        liberer(&a);
+        return NULL;
+    }
     a->fd->fg->fd = alloue_noeud("Camomille");
+    if(!a->fd->fg->fd){
+        liberer(&a);
+        return NULL;
+    }
     a->fd->fg->fd->fg = alloue_noeud("Iris");
+    if(!a->fd->fg->fd){
+        liberer(&a);
+        return NULL;
+    }
     a->fd->fg->fd->fd = alloue_noeud("Jasmin");
+    if(!a->fd->fg->fd->fd){
+        liberer(&a);
+        return NULL;
+    }
     return a;       //On renvoie l'arbre construit
 }
 
 Arbre cree_A_3(){
     Arbre a = alloue_noeud("Intel Core i9");
+    if(!a)
+        return NULL;
     a->fg = alloue_noeud("Apple M3 Max");
+    if(!a->fg){
+        liberer(&a);
+        return NULL;
+    }
     a->fg->fd = alloue_noeud("AMD Ryzen 9");
+    if(!a->fg->fd){
+        liberer(&a);
+        return NULL;
+    }
     a->fg->fd->fg = alloue_noeud("Intel Core i9");
+    if(!a->fg->fd->fg){
+        liberer(&a);
+        return NULL;
+    }
     a->fd = alloue_noeud("Intel Core i9");
+    if(!a->fd){
+        liberer(&a);
+        return NULL;
+    }
     a->fd->fg = alloue_noeud("Intel Core i9");
+    if(!a->fd->fg){
+        liberer(&a);
+        return NULL;
+    }
     return a;       //On renvoie l'arbre construit
 }
 
