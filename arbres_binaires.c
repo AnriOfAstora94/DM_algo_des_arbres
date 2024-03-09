@@ -92,31 +92,37 @@ Arbre cree_A_3(){
 }
 
 int construit_arbre(Arbre *a){
+    int vide_ou_non;
+    printf("Entrez 1 ou 0 (0 pour quitter, 1 pour entrez la racine) : \n");
+    scanf("%d", &vide_ou_non);
+
+    if(vide_ou_non)                     //On fait un parcours préfixe
+        return construit_arbre_aux(&a);
+
+    return 0;   // On fait rien
+}
+
+int construit_arbre_aux(Arbre *a){
     int sous_arbre_gauche;
     int sous_arbre_droit;
     char donnee[50];
 
-    printf("Entrez 1 pour indiquer s'il y a une valeur : \n");
-    scanf("%d", &sous_arbre_gauche);
-
     printf("Entrez la valeur du noeud (50 caractères max) : \n");
     scanf("%s", &donnee);
+    *a = alloue_noeud(donnee);      //Attribue la valeur du noeud
 
-
-
-    return 1;
-}
-
-int construit_arbre_aux(Arbre *a){
-        int sous_arbre_gauche;
-    int sous_arbre_droit;
-    char donnee[50];
-
-    printf("Entrez 1 pour indiquer s'il y a une valeur : \n");
+    printf("Y-a t'il un sous-arbre gauche ? (1 = oui; 0 = non;) \n");   //Sous-arbre gauche
     scanf("%d", &sous_arbre_gauche);
+    if(sous_arbre_gauche)   //Test s'il y a un sous-arbre gauche
+        construit_arbre_aux(&(*a)->fg);
+    
+    printf("Y-a t'il un sous-arbre droit ? (1 = oui; 0 = non;) \n");   //Sous-arbre droit
+    scanf("%d", &sous_arbre_droit);
+    if(sous_arbre_droit)   //Test s'il y a un sous-arbre droit
+        construit_arbre_aux(&(*a)->fd);
 
-    printf("Entrez la valeur du noeud (50 caractères max) : \n");
-    scanf("%s", &donnee);
+    return 1;   //On a fini tout s'est bien passé (pas d'erreur de malloc dans alloue_noeud)
+
 }
 
 void ecrireDebut(FILE *f){
